@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8"/>
+<title>Document</title>
+</head>
+<body>
+<input name="pesquisaCep"  id= "pesquisaCep" type="number">
+    <input type="button" value="Buscar no via CEP" onclick="buscarEnderecoNoViaCEP()" />
+
+    </body>
+    <script>
+        function buscarEnderecoNoViaCEP(){
+           componentepesquisaCep = document.getElementById("pesquisaCep");
+           alert("o cep digitado é: " + componentepesquisaCep.value);
+            alert ("funcionou o  botao buscar");
+        }
