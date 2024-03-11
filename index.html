@@ -1,52 +1,83 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta charset="UTF-8"/>
-<title>Document</title>
+    <meta charset="UTF-8" />
+    <title>Document</title>
 </head>
+
 <body>
-<input name="pesquisaCep"  id= "pesquisaCep" type="number">
-    <input type="button" value="Buscar no via CEP" onclick="buscarEnderecoNoViaCEP()" />
-    <label>Rua:
-        <input name="rua" type="text" id="rua" size="60" /></label><br />
-        <label>Bairro:
+    <input name="pesquisaCnpj" id="pesquisaCnpj" type="number">
+    <input type="button" value="Buscar no receitaws" onclick="buscarEnderecoNoViaCnpj()" />
+    <br><br>
+    <label>Razão social:
+        <input name="razao_social" type="text" id="razao_social" size="60" /></label><br />
+    <label>Nome fantasia:
+        <input name="nome_fantasia" type="text" id="nome_fantasia" size="40" /></label><br />
+    <label>logradouro:
+        <input name="logradouro" type="text" id="logradouro" size="40" /></label><br />
+    <label>bairro:
         <input name="bairro" type="text" id="bairro" size="40" /></label><br />
-        <label>Cidade:
-        <input name="cidade" type="text" id="cidade" size="40" /></label><br />
-        <label>Estado:
-        <input name="uf" type="text" id="uf" size="2" /></label><br />
-        <label>IBGE:
-        <input name="ibge" type="text" id="ibge" size="8" /></label><br />
-      
-    </body>
-    <script>
-        function buscarEnderecoNoViaCEP(){
-           componentepesquisaCep = document.getElementById("pesquisaCep");
-           alert("o cep digitado é: " + componentepesquisaCep.value);
-            alert ("funcionou o  botao buscar");
-            //Cria um elemento javascript.
-            var script = document.createElement('script');
+    <label>capital social:
+        <input name="capital_social" type="text" id="capital_social" size="40" /></label><br />
+    <label> cep:
+        <input name="cep" type="text" id="cep" size="40" /></label><br />
+    <label>Nome fantasia:
+        <input name="nome_fantasia" type="text" id="nome_fantasia" size="40" /></label><br />
+        <input name="capital_social" type="text" id="capital_social" size="40" /></label><br />
+    <label>Nome fantasia:
+        <input name="nome_fantasia" type="text" id="nome_fantasia" size="40" /></label><br />
+    <label>Nome fantasia:
+        <input name="nome_fantasia" type="text" id="nome_fantasia" size="40" /></label><br />
 
-//Sincroniza com o callback.
-script.src = 'https://viacep.com.br/ws/'+ componentepesquisaCep.value + '/json/?callback=meu_callback';
+        <input name="capital_social" type="text" id="capital_social" size="40" /></label><br />
+    <label>Nome fantasia:
+        <input name="nome_fantasia" type="text" id="nome_fantasia" size="40" /></label><br />
+    <label>Nome fantasia:
+        <input name="nome_fantasia" type="text" id="nome_fantasia" size="40" /></label><br />
 
-//Insere script no documento e carrega o conteúdo.
-document.body.appendChild(script);
-        }
+        <input name="capital_social" type="text" id="capital_social" size="40" /></label><br />
+    <label>Nome fantasia:
+        <input name="nome_fantasia" type="text" id="nome_fantasia" size="40" /></label><br />
+    <label>Nome fantasia:
+        <input name="nome_fantasia" type="text" id="nome_fantasia" size="40" /></label><br />
 
-        function meu_callback(conteudo) {
-        if (!("erro" in conteudo)) {
-            //Atualiza os campos com os valores.
-            document.getElementById('rua').value=(conteudo.logradouro);
-            document.getElementById('bairro').value=(conteudo.bairro);
-            document.getElementById('cidade').value=(conteudo.localidade);
-            document.getElementById('uf').value=(conteudo.uf);
-            document.getElementById('ibge').value=(conteudo.ibge);
-        } //end if.
-        else {
-            //CEP não Encontrado.
-            limpa_formulário_cep();
-            alert("CEP não encontrado.");
-        }
+        <input name="capital_social" type="text" id="capital_social" size="40" /></label><br />
+    <label>Nome fantasia:
+        <input name="nome_fantasia" type="text" id="nome_fantasia" size="40" /></label><br />
+    <label>Nome fantasia:
+        <input name="nome_fantasia" type="text" id="nome_fantasia" size="40" /></label><br />
+
+
+</body>
+<script>
+    function buscarEnderecoNoViaCnpj() {
+        var cnpj = document.getElementById("pesquisaCnpj").value;
+        
+        fetch("https://cors-anywhere.herokuapp.com/https://receitaws.com.br/v1/cnpj/" + cnpj).then((response) => {
+            if(response.ok) {
+                return response.json();
+            }
+        }).then((dados) => {
+            console.log(dados)
+            document.getElementById("razao_social").value = dados.nome;
+            document.getElementById("nome_fantasia").value = dados.nome;
+            document.getElementById("logradouro").value = dados.logradouro;
+            document.getElementById("bairro").value = dados.bairro;
+            document.getElementById("capital_social").value = dados.capital_social;
+            document.getElementById("cep").value = dados.cep;
+            document.getElementById("razao_social").value = dados.nome;
+            document.getElementById("razao_social").value = dados.nome;
+            document.getElementById("razao_social").value = dados.nome;
+            document.getElementById("razao_social").value = dados.nome;
+            document.getElementById("razao_social").value = dados.nome;
+            document.getElementById("razao_social").value = dados.nome;
+            document.getElementById("razao_social").value = dados.nome;
+            document.getElementById("razao_social").value = dados.nome;
+       
+       
+       
+        
+        })
     }
 </script>
